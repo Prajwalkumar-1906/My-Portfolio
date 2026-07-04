@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiBookOpen, FiCalendar, FiAward, FiMapPin } from 'react-icons/fi';
+import profileImg from '../assets/profile.jpg';
 
 const QUICK_FACTS = [
   { icon: FiBookOpen, label: 'Degree', value: 'B.E. CSE (VTU)' },
@@ -14,7 +15,7 @@ export default function About() {
     <section id="about" className="py-20 bg-slate-50 dark:bg-[#0b0f19]/30 transition-colors duration-300">
       <div className="max-w-5xl mx-auto px-6">
         {/* Section Heading */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -33,63 +34,81 @@ export default function About() {
           />
         </div>
 
-        {/* Layout */}
-        <div className="grid md:grid-cols-5 gap-10 items-center">
-          {/* Narrative Text */}
+        {/* Main Grid: Portrait and Narrative */}
+        <div className="grid md:grid-cols-12 gap-10 items-center mb-12">
+          {/* Portrait Image */}
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="md:col-span-3 space-y-6"
+            className="md:col-span-5 lg:col-span-4 flex justify-center"
           >
-            <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200">
-              Aspiring Tech Professional
-            </h3>
-            <p className="text-slate-650 dark:text-slate-450 leading-relaxed text-base">
-              I am a motivated final-year Computer Science Engineering student with hands-on experience across software engineering, analytics, and machine learning.
-            </p>
-            <p className="text-slate-650 dark:text-slate-450 leading-relaxed text-base">
-              I love bridging the gap between robust software architecture and intelligent systems. By combining technical analytical skills with standard developer practices, I aim to build systems that automate processes, generate insights, and solve complex user-facing problems.
-            </p>
-            <p className="text-slate-650 dark:text-slate-450 leading-relaxed text-base font-medium text-blue-600 dark:text-blue-400">
-              Actively exploring opportunities as an entry-level AI Engineer, Software Developer, or Business Analyst.
-            </p>
+            <div className="relative group w-64 h-80 md:w-full md:h-auto max-w-[280px] aspect-[3/4] rounded-2xl overflow-hidden shadow-md border border-slate-200/50 dark:border-slate-800/80">
+              <img 
+                src={profileImg} 
+                alt="Prajwalkumar Madiwal" 
+                className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030712]/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
           </motion.div>
 
-          {/* Quick-fact chips */}
+          {/* Narrative Text */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4"
+            className="md:col-span-7 lg:col-span-8 space-y-5"
           >
-            {QUICK_FACTS.map((fact, index) => {
-              const Icon = fact.icon;
-              return (
-                <motion.div
-                  key={index}
-                  whileHover={{ y: -3, scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex items-center space-x-4 p-4 rounded-xl bg-white dark:bg-[#0f172a] shadow-sm hover:shadow-md border border-slate-100 dark:border-slate-800/80 transition-all duration-300"
-                >
-                  <div className="flex-shrink-0 p-3 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                      {fact.label}
-                    </p>
-                    <p className="text-sm font-bold text-slate-800 dark:text-slate-200">
-                      {fact.value}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
+            <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200">
+              Aspiring AI Engineer & Software Developer
+            </h3>
+            <p className="text-slate-650 dark:text-slate-400 leading-relaxed text-sm sm:text-base">
+              I am a motivated final-year Computer Science Engineering student with hands-on experience across software engineering, analytics, and machine learning.
+            </p>
+            <p className="text-slate-650 dark:text-slate-400 leading-relaxed text-sm sm:text-base">
+              I love bridging the gap between robust software architecture and intelligent systems. By combining technical analytical skills with standard developer practices, I aim to build systems that automate processes, generate insights, and solve complex user-facing problems.
+            </p>
+            <p className="text-slate-650 dark:text-slate-400 leading-relaxed text-sm sm:text-base font-semibold text-blue-600 dark:text-blue-450">
+              Actively exploring opportunities as an entry-level AI Engineer, Developer, or Business Analyst.
+            </p>
           </motion.div>
         </div>
+
+        {/* Quick-fact chips Row */}
+        <motion.div 
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+        >
+          {QUICK_FACTS.map((fact, index) => {
+            const Icon = fact.icon;
+            return (
+              <motion.div
+                key={index}
+                whileHover={{ y: -3, scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+                className="flex items-center space-x-3 p-4 rounded-xl bg-white dark:bg-[#0f172a] shadow-sm hover:shadow-md border border-slate-100 dark:border-slate-800/80 transition-all duration-300"
+              >
+                <div className="flex-shrink-0 p-2.5 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-450">
+                  <Icon className="w-4 h-4" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    {fact.label}
+                  </p>
+                  <p className="text-xs font-bold text-slate-700 dark:text-slate-350">
+                    {fact.value}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );
