@@ -33,7 +33,7 @@ export default function Projects() {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-4xl font-bold text-white mb-4"
           >
@@ -55,11 +55,11 @@ export default function Projects() {
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-20px" }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               className="h-full"
             >
-              <Tilt3D className="group flex flex-col justify-between p-6 md:p-8 rounded-2xl bg-[#0b0f19]/50 border border-slate-800/60 shadow-sm hover:shadow-md hover:border-blue-400/20 transition-all duration-300 relative h-full">
+              <Tilt3D className="group flex flex-col justify-between p-6 md:p-8 rounded-2xl bg-[#0b0f19]/50 border border-slate-800/60 shadow-sm hover:shadow-md hover:border-blue-400/20 relative h-full">
                 {/* Top Section */}
                 <div>
                   <div className="flex justify-between items-start gap-4 mb-4">

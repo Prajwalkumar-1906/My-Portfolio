@@ -39,7 +39,7 @@ export default function Certifications() {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-4xl font-bold text-white mb-4"
           >
@@ -61,11 +61,11 @@ export default function Certifications() {
               key={idx}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-20px" }}
               transition={{ duration: 0.5, delay: idx * 0.08 }}
               className="h-full"
             >
-              <Tilt3D className={`p-6 rounded-2xl border bg-[#0f172a] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full ${cert.color}`}>
+              <Tilt3D className={`p-6 rounded-2xl border bg-[#0f172a] shadow-sm hover:shadow-md flex flex-col justify-between h-full ${cert.color}`}>
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <FiAward className="w-8 h-8 opacity-90" />

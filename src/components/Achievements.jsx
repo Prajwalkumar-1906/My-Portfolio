@@ -50,7 +50,7 @@ export default function Achievements() {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-4xl font-bold text-white mb-4"
           >
@@ -74,11 +74,11 @@ export default function Achievements() {
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-20px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="h-full"
               >
-                <Tilt3D className="p-6 md:p-8 rounded-2xl bg-[#0b0f19]/50 border border-slate-800/60 shadow-sm flex items-start space-x-5 hover:shadow-md transition-all duration-300 h-full">
+                <Tilt3D className="p-6 md:p-8 rounded-2xl bg-[#0b0f19]/50 border border-slate-800/60 shadow-sm flex items-start space-x-5 hover:shadow-md h-full">
                   <div className={`p-4 rounded-xl flex-shrink-0 border ${ach.color}`}>
                     <Icon className="w-6 h-6" />
                   </div>

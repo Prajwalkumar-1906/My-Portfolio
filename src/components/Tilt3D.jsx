@@ -1,11 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 export default function Tilt3D({ children, className = '' }) {
   const cardRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e) => {
     const el = cardRef.current;
     if (!el) return;
+    setIsHovered(true);
     const rect = el.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -23,6 +25,7 @@ export default function Tilt3D({ children, className = '' }) {
   const handleMouseLeave = () => {
     const el = cardRef.current;
     if (!el) return;
+    setIsHovered(false);
     el.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
     el.style.boxShadow = `none`;
   };
@@ -32,7 +35,7 @@ export default function Tilt3D({ children, className = '' }) {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`transition-all duration-200 ease-out will-change-transform ${className}`}
+      className={`${isHovered ? '' : 'transition-all duration-500 ease-out'} will-change-transform ${className}`}
       style={{ transformStyle: 'preserve-3d' }}
     >
       {children}

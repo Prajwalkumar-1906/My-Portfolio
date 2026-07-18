@@ -23,7 +23,7 @@ export default function Education() {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-4xl font-bold text-white mb-4"
           >
@@ -45,7 +45,7 @@ export default function Education() {
               key={idx}
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-20px" }}
               transition={{ duration: 0.6, delay: idx * 0.15 }}
               className="relative pl-8 md:pl-10 group"
             >
@@ -55,7 +55,7 @@ export default function Education() {
               </div>
 
               {/* Education Card */}
-              <Tilt3D className="p-6 md:p-8 rounded-2xl bg-[#0f172a] border border-slate-800/85 shadow-sm hover:shadow-md transition-all duration-300">
+              <Tilt3D className="p-6 md:p-8 rounded-2xl bg-[#0f172a] border border-slate-800/85 shadow-sm hover:shadow-md">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
                   <div>
