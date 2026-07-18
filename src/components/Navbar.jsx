@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi';
+import { FiMenu, FiX } from 'react-icons/fi';
 
 const NAV_ITEMS = [
   { id: 'hero', label: 'Home' },
@@ -13,7 +13,7 @@ const NAV_ITEMS = [
   { id: 'contact', label: 'Contact' },
 ];
 
-export default function Navbar({ darkMode, toggleDarkMode }) {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [scrolled, setScrolled] = useState(false);
@@ -78,7 +78,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled 
-        ? 'glassmorphism dark:bg-[#0b0f19]/80 bg-white/80 py-3 shadow-lg border-b border-slate-200/50 dark:border-slate-800/50' 
+        ? 'glassmorphism bg-[#0b0f19]/80 py-3 shadow-lg border-b border-slate-800/50' 
         : 'bg-transparent py-5'
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -88,7 +88,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           className="text-xl font-bold tracking-tight cursor-pointer focus:outline-none"
         >
           <span className="bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">Prajwalkumar</span>
-          <span className="text-slate-700 dark:text-slate-300">.M</span>
+          <span className="text-slate-350">.M</span>
         </button>
 
         {/* Desktop Menu */}
@@ -99,36 +99,20 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
               onClick={() => handleNavClick(item.id)}
               className={`px-4 py-2 rounded-lg text-sm font-medium tracking-wide transition-all duration-200 cursor-pointer focus:outline-none ${
                 activeSection === item.id
-                  ? 'text-blue-500 bg-blue-500/10 dark:text-blue-400 dark:bg-blue-400/10'
-                  : 'text-slate-600 hover:text-blue-500 dark:text-slate-300 dark:hover:text-blue-400'
+                  ? 'text-blue-400 bg-blue-400/10'
+                  : 'text-slate-350 hover:text-blue-400'
               }`}
             >
               {item.label}
             </button>
           ))}
-
-          {/* Theme Toggle Button */}
-          <button
-            onClick={toggleDarkMode}
-            className="ml-4 p-2 rounded-lg text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800/60 transition-colors cursor-pointer focus:outline-none"
-            aria-label="Toggle theme"
-          >
-            {darkMode ? <FiSun className="w-5 h-5" /> : <FiMoon className="w-5 h-5" />}
-          </button>
         </div>
 
         {/* Mobile menu trigger */}
-        <div className="flex lg:hidden items-center space-x-3">
-          <button
-            onClick={toggleDarkMode}
-            className="p-2 rounded-lg text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800/60 transition-colors cursor-pointer"
-            aria-label="Toggle theme"
-          >
-            {darkMode ? <FiSun className="w-5 h-5" /> : <FiMoon className="w-5 h-5" />}
-          </button>
+        <div className="flex lg:hidden items-center">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 rounded-lg text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800/60 transition-colors cursor-pointer"
+            className="p-2 rounded-lg text-slate-300 hover:bg-slate-800/60 transition-colors cursor-pointer"
             aria-label="Toggle menu"
           >
             {isOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
@@ -138,15 +122,15 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
 
       {/* Mobile Menu Panel */}
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 glassmorphism dark:bg-[#030712]/95 bg-white/95 border-b border-slate-200/50 dark:border-slate-800/50 py-4 px-6 flex flex-col space-y-2 animate-fade-in shadow-xl">
+        <div className="lg:hidden absolute top-full left-0 right-0 glassmorphism bg-[#030712]/95 border-b border-slate-800/50 py-4 px-6 flex flex-col space-y-2 animate-fade-in shadow-xl">
           {NAV_ITEMS.map((item) => (
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
               className={`w-full text-left px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 cursor-pointer ${
                 activeSection === item.id
-                  ? 'text-blue-500 bg-blue-500/10 dark:text-blue-400 dark:bg-blue-400/10'
-                  : 'text-slate-700 hover:text-blue-500 dark:text-slate-300 dark:hover:text-blue-400'
+                  ? 'text-blue-400 bg-blue-400/10'
+                  : 'text-slate-300 hover:text-blue-400'
               }`}
             >
               {item.label}

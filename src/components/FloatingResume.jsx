@@ -29,9 +29,9 @@ export default function FloatingResume() {
         >
           {/* Floating Action Button */}
           <a
-            href="/Prajwalkumar_Madiwal_Resume.pdf" // Placeholder: User should place their resume PDF in public/
+            href="/resume.pdf"
             download="Prajwalkumar_Madiwal_Resume.pdf"
-            className="group flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-white font-semibold px-4 py-3 sm:px-5 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-[#030712]"
+            className="group flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-white font-semibold px-4 py-3 sm:px-5 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#030712]"
             title="Download Resume"
           >
             <FiDownload className="w-5 h-5 group-hover:animate-bounce" />

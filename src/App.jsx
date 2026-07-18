@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -14,34 +14,10 @@ import FloatingResume from './components/FloatingResume';
 import AstraBot from './components/AstraBot';
 
 export default function App() {
-  // Default to Dark Mode for premium tech developer aesthetic
-  const [darkMode, setDarkMode] = useState(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme === 'dark';
-    }
-    return true; // Default dark
-  });
-
-  useEffect(() => {
-    const root = window.document.documentElement;
-    if (darkMode) {
-      root.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      root.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [darkMode]);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
   return (
-    <div className="min-h-screen bg-slate-55 dark:bg-[#030712] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="min-h-screen bg-[#030712] text-slate-100 antialiased">
       {/* Sticky Top Navbar */}
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Navbar />
       
       {/* Main Single Page Content */}
       <main>

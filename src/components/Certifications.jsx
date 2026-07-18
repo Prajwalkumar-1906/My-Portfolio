@@ -1,43 +1,37 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiAward, FiExternalLink } from 'react-icons/fi';
+import { FiAward } from 'react-icons/fi';
 
 const CERTIFICATIONS = [
   {
-    title: 'Oracle Cloud Infrastructure 2025 Certified',
+    title: 'Oracle Certified Foundations Associate — Oracle Cloud Infrastructure',
     issuer: 'Oracle',
     date: '2025',
-    color: 'border-orange-500/20 text-orange-500 hover:border-orange-500/40 bg-orange-500/5'
+    color: 'border-orange-500/20 text-orange-400 hover:border-orange-500/40 bg-orange-500/5'
   },
   {
-    title: 'AI on Jetson Nano Deployment',
-    issuer: 'NVIDIA Deep Learning Institute',
+    title: 'Getting Started with AI on Jetson Nano',
+    issuer: 'NVIDIA',
     date: '2025',
-    color: 'border-green-500/20 text-green-500 hover:border-green-500/40 bg-green-500/5'
+    color: 'border-green-500/20 text-green-400 hover:border-green-500/40 bg-green-500/5'
   },
   {
-    title: 'High Tech Industry Frameworks',
-    issuer: 'SAP',
+    title: 'Introducing the High Tech Industry',
+    issuer: 'SAP Certified',
     date: '2025',
-    color: 'border-blue-500/20 text-blue-500 hover:border-blue-500/40 bg-blue-500/5'
+    color: 'border-blue-500/20 text-blue-400 hover:border-blue-500/40 bg-blue-500/5'
   },
   {
-    title: 'Python for Data Science / Power BI',
-    issuer: 'Upgrad / Simplilearn',
-    date: '2024',
-    color: 'border-purple-500/20 text-purple-500 hover:border-purple-500/40 bg-purple-500/5'
-  },
-  {
-    title: 'AI Catalyst Credentials',
-    issuer: 'tiramAI',
-    date: '2025',
-    color: 'border-teal-500/20 text-teal-500 hover:border-teal-500/40 bg-teal-500/5'
+    title: 'Intra-College Webathon 2026 — Finalist',
+    issuer: 'Webathon Coordinator',
+    date: '2026',
+    color: 'border-teal-500/20 text-teal-400 hover:border-teal-500/40 bg-teal-500/5'
   }
 ];
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="py-20 bg-slate-50 dark:bg-[#0b0f19]/30 transition-colors duration-300">
+    <section id="certifications" className="py-20 bg-[#0b0f19]/30 border-y border-slate-900 transition-colors duration-300">
       <div className="max-w-5xl mx-auto px-6">
         {/* Section Heading */}
         <div className="text-center mb-16">
@@ -46,7 +40,7 @@ export default function Certifications() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4"
+            className="text-3xl md:text-4xl font-bold text-white mb-4"
           >
             Certifications
           </motion.h2>
@@ -60,7 +54,7 @@ export default function Certifications() {
         </div>
 
         {/* Certifications Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {CERTIFICATIONS.map((cert, idx) => (
             <motion.div
               key={idx}
@@ -69,29 +63,24 @@ export default function Certifications() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: idx * 0.08 }}
               whileHover={{ y: -4 }}
-              className={`p-6 rounded-2xl border bg-white dark:bg-[#0f172a] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between ${cert.color}`}
+              className={`p-6 rounded-2xl border bg-[#0f172a] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between ${cert.color}`}
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <FiAward className="w-8 h-8 opacity-90" />
-                  <span className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+                  <span className="text-xs font-semibold text-slate-450 uppercase tracking-wider">
                     {cert.date}
                   </span>
                 </div>
 
-                <h3 className="text-base font-bold text-slate-800 dark:text-slate-200 line-clamp-2 mb-2">
+                <h3 className="text-base font-bold text-slate-200 line-clamp-3 mb-2">
                   {cert.title}
                 </h3>
               </div>
 
-              <div className="flex justify-between items-center mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80">
-                <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
+              <div className="flex justify-between items-center mt-4 pt-3 border-t border-slate-800/80">
+                <span className="text-xs font-bold text-slate-400">
                   {cert.issuer}
-                </span>
-                
-                {/* Link Placeholder */}
-                <span className="text-slate-400 dark:text-slate-600 group-hover:text-blue-500 cursor-pointer transition-colors duration-200">
-                  <FiExternalLink className="w-3.5 h-3.5" title="Verify credential" />
                 </span>
               </div>
             </motion.div>
