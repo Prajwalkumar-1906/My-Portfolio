@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiAward } from 'react-icons/fi';
+import Tilt3D from './Tilt3D';
 
 const CERTIFICATIONS = [
   {
@@ -62,27 +63,28 @@ export default function Certifications() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: idx * 0.08 }}
-              whileHover={{ y: -4 }}
-              className={`p-6 rounded-2xl border bg-[#0f172a] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between ${cert.color}`}
+              className="h-full"
             >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <FiAward className="w-8 h-8 opacity-90" />
-                  <span className="text-xs font-semibold text-slate-450 uppercase tracking-wider">
-                    {cert.date}
-                  </span>
+              <Tilt3D className={`p-6 rounded-2xl border bg-[#0f172a] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full ${cert.color}`}>
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <FiAward className="w-8 h-8 opacity-90" />
+                    <span className="text-xs font-semibold text-slate-455 uppercase tracking-wider">
+                      {cert.date}
+                    </span>
+                  </div>
+
+                  <h3 className="text-base font-bold text-slate-200 line-clamp-3 mb-2">
+                    {cert.title}
+                  </h3>
                 </div>
 
-                <h3 className="text-base font-bold text-slate-200 line-clamp-3 mb-2">
-                  {cert.title}
-                </h3>
-              </div>
-
-              <div className="flex justify-between items-center mt-4 pt-3 border-t border-slate-800/80">
-                <span className="text-xs font-bold text-slate-400">
-                  {cert.issuer}
-                </span>
-              </div>
+                <div className="flex justify-between items-center mt-4 pt-3 border-t border-slate-800/80">
+                  <span className="text-xs font-bold text-slate-400">
+                    {cert.issuer}
+                  </span>
+                </div>
+              </Tilt3D>
             </motion.div>
           ))}
         </div>

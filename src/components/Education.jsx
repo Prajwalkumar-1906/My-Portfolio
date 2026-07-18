@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiBookOpen, FiCalendar, FiMapPin, FiActivity } from 'react-icons/fi';
+import Tilt3D from './Tilt3D';
 
 const EDUCATION_ITEMS = [
   {
@@ -54,7 +55,7 @@ export default function Education() {
               </div>
 
               {/* Education Card */}
-              <div className="p-6 md:p-8 rounded-2xl bg-[#0f172a] border border-slate-800/85 shadow-sm hover:shadow-md transition-all duration-300">
+              <Tilt3D className="p-6 md:p-8 rounded-2xl bg-[#0f172a] border border-slate-800/85 shadow-sm hover:shadow-md transition-all duration-300">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
                   <div>
@@ -84,7 +85,7 @@ export default function Education() {
                   <FiActivity className="w-3.5 h-3.5 text-blue-500" />
                   <span>Grade: CGPA {edu.grade}</span>
                 </div>
-              </div>
+              </Tilt3D>
             </motion.div>
           ))}
         </div>

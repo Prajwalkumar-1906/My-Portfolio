@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink, FiCpu } from 'react-icons/fi';
+import Tilt3D from './Tilt3D';
 
 const PROJECTS = [
+// ... [rest of file imports done]
+
   {
     title: 'ASTRA AI',
     description: 'Built an AI-powered intelligent assistant using Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG) to deliver context-aware, conversational responses over custom knowledge bases. Integrated document retrieval, prompt engineering, and semantic search to enable natural-language interaction with user-uploaded content. Designed a scalable full-stack architecture with a responsive React frontend, FastAPI backend, and real-time AI inference pipeline.',
@@ -54,67 +57,68 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              whileHover={{ y: -6 }}
-              className="group flex flex-col justify-between p-6 md:p-8 rounded-2xl bg-[#0b0f19]/50 border border-slate-800/60 shadow-sm hover:shadow-md hover:border-blue-400/20 transition-all duration-300 relative"
+              className="h-full"
             >
-              {/* Top Section */}
-              <div>
-                <div className="flex justify-between items-start gap-4 mb-4">
-                  <h3 className="text-xl font-bold text-slate-200 group-hover:text-blue-400 transition-colors duration-200">
-                    {proj.title}
-                  </h3>
-                  
-                  <span className="p-2 rounded-lg bg-blue-500/10 text-blue-450">
-                    <FiCpu className="w-4 h-4" />
-                  </span>
-                </div>
-
-                <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                  {proj.description}
-                </p>
-              </div>
-
-              {/* Bottom Section */}
-              <div>
-                {/* Tech tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {proj.tech.map((t, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800/40 text-slate-350"
-                    >
-                      {t}
+              <Tilt3D className="group flex flex-col justify-between p-6 md:p-8 rounded-2xl bg-[#0b0f19]/50 border border-slate-800/60 shadow-sm hover:shadow-md hover:border-blue-400/20 transition-all duration-300 relative h-full">
+                {/* Top Section */}
+                <div>
+                  <div className="flex justify-between items-start gap-4 mb-4">
+                    <h3 className="text-xl font-bold text-slate-200 group-hover:text-blue-400 transition-colors duration-200">
+                      {proj.title}
+                    </h3>
+                    
+                    <span className="p-2 rounded-lg bg-blue-500/10 text-blue-450">
+                      <FiCpu className="w-4 h-4" />
                     </span>
-                  ))}
+                  </div>
+
+                  <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                    {proj.description}
+                  </p>
                 </div>
 
-                {/* Actions */}
-                <div className="flex items-center space-x-4 border-t border-slate-800/60 pt-4">
-                  {proj.github && (
-                    <a
-                      href={proj.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center space-x-2 text-xs font-bold text-slate-400 hover:text-blue-400 transition-colors duration-200"
-                    >
-                      <FiGithub className="w-4 h-4" />
-                      <span>GitHub Repository</span>
-                    </a>
-                  )}
+                {/* Bottom Section */}
+                <div>
+                  {/* Tech tags */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {proj.tech.map((t, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800/40 text-slate-350"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
 
-                  {proj.live && (
-                    <a
-                      href={proj.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center space-x-2 text-xs font-bold text-slate-400 hover:text-blue-400 transition-colors duration-200 ml-auto"
-                    >
-                      <FiExternalLink className="w-4 h-4" />
-                      <span>Live Demo</span>
-                    </a>
-                  )}
+                  {/* Actions */}
+                  <div className="flex items-center space-x-4 border-t border-slate-800/60 pt-4">
+                    {proj.github && (
+                      <a
+                        href={proj.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center space-x-2 text-xs font-bold text-slate-400 hover:text-blue-400 transition-colors duration-200"
+                      >
+                        <FiGithub className="w-4 h-4" />
+                        <span>GitHub Repository</span>
+                      </a>
+                    )}
+
+                    {proj.live && (
+                      <a
+                        href={proj.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center space-x-2 text-xs font-bold text-slate-400 hover:text-blue-400 transition-colors duration-200 ml-auto"
+                      >
+                        <FiExternalLink className="w-4 h-4" />
+                        <span>Live Demo</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </div>
+              </Tilt3D>
             </motion.div>
           ))}
         </div>

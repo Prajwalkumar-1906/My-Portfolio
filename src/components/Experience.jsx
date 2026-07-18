@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiBriefcase, FiCalendar, FiGlobe } from 'react-icons/fi';
+import Tilt3D from './Tilt3D';
 
 const EXPERIENCES = [
   {
@@ -68,7 +69,7 @@ export default function Experience() {
               </div>
 
               {/* Experience Card */}
-              <div className="p-6 md:p-8 rounded-2xl bg-[#0f172a] border border-slate-800/85 shadow-sm hover:shadow-md transition-all duration-300">
+              <Tilt3D className="p-6 md:p-8 rounded-2xl bg-[#0f172a] border border-slate-800/85 shadow-sm hover:shadow-md transition-all duration-300">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
                   <div>
@@ -110,7 +111,7 @@ export default function Experience() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </Tilt3D>
             </motion.div>
           ))}
         </div>

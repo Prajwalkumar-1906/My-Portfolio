@@ -13,6 +13,7 @@ import {
   FiSearch, FiTerminal, FiZap, FiLayers, FiGlobe,
   FiBarChart2, FiTable, FiUsers, FiRefreshCw
 } from 'react-icons/fi';
+import Tilt3D from './Tilt3D';
 
 const SKILL_CATEGORIES = [
   {
@@ -130,30 +131,32 @@ export default function Skills() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="p-6 rounded-2xl bg-[#0b0f19]/50 border border-slate-800/60 shadow-sm flex flex-col justify-between"
+              className="h-full"
             >
-              <div>
-                <h3 className="text-lg font-bold text-slate-200 mb-5 pb-2 border-b border-slate-800">
-                  {category.title}
-                </h3>
-                
-                <div className="flex flex-wrap gap-2.5">
-                  {category.skills.map((skill, sIdx) => {
-                    const Icon = skill.icon;
-                    return (
-                      <motion.div
-                        key={sIdx}
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        transition={{ duration: 0.2 }}
-                        className={`inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl border text-xs font-semibold select-none cursor-default transition-all duration-200 ${skill.color}`}
-                      >
-                        <Icon className="w-4 h-4 flex-shrink-0" />
-                        <span>{skill.name}</span>
-                      </motion.div>
-                    );
-                  })}
+              <Tilt3D className="p-6 rounded-2xl bg-[#0b0f19]/50 border border-slate-800/60 shadow-sm flex flex-col justify-between h-full">
+                <div>
+                  <h3 className="text-lg font-bold text-slate-200 mb-5 pb-2 border-b border-slate-800">
+                    {category.title}
+                  </h3>
+                  
+                  <div className="flex flex-wrap gap-2.5">
+                    {category.skills.map((skill, sIdx) => {
+                      const Icon = skill.icon;
+                      return (
+                        <motion.div
+                          key={sIdx}
+                          whileHover={{ scale: 1.05, y: -2 }}
+                          transition={{ duration: 0.2 }}
+                          className={`inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl border text-xs font-semibold select-none cursor-default transition-all duration-200 ${skill.color}`}
+                        >
+                          <Icon className="w-4 h-4 flex-shrink-0" />
+                          <span>{skill.name}</span>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
+              </Tilt3D>
             </motion.div>
           ))}
         </motion.div>

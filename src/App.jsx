@@ -12,10 +12,14 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingResume from './components/FloatingResume';
 import AstraBot from './components/AstraBot';
+import Background3D from './components/Background3D';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#030712] text-slate-100 antialiased">
+    <div className="min-h-screen bg-[#030712] text-slate-100 antialiased relative">
+      {/* Global 3D Background */}
+      <Background3D />
+      
       {/* Sticky Top Navbar */}
       <Navbar />
       

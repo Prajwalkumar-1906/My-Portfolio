@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiAward, FiUsers, FiUserCheck, FiLinkedin, FiHeart, FiVolume2 } from 'react-icons/fi';
+import Tilt3D from './Tilt3D';
 
 const ACHIEVEMENTS = [
   {
@@ -75,24 +76,25 @@ export default function Achievements() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-                className="p-6 md:p-8 rounded-2xl bg-[#0b0f19]/50 border border-slate-800/60 shadow-sm flex items-start space-x-5 hover:shadow-md transition-all duration-300"
+                className="h-full"
               >
-                <div className={`p-4 rounded-xl flex-shrink-0 border ${ach.color}`}>
-                  <Icon className="w-6 h-6" />
-                </div>
-                
-                <div>
-                  <h3 className="text-lg font-bold text-slate-200">
-                    {ach.title}
-                  </h3>
-                  <p className="text-xs font-semibold text-blue-400 mb-3 tracking-wide">
-                    {ach.subtitle}
-                  </p>
-                  <p className="text-slate-400 text-sm leading-relaxed">
-                    {ach.description}
-                  </p>
-                </div>
+                <Tilt3D className="p-6 md:p-8 rounded-2xl bg-[#0b0f19]/50 border border-slate-800/60 shadow-sm flex items-start space-x-5 hover:shadow-md transition-all duration-300 h-full">
+                  <div className={`p-4 rounded-xl flex-shrink-0 border ${ach.color}`}>
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-lg font-bold text-slate-200">
+                      {ach.title}
+                    </h3>
+                    <p className="text-xs font-semibold text-blue-400 mb-3 tracking-wide">
+                      {ach.subtitle}
+                    </p>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      {ach.description}
+                    </p>
+                  </div>
+                </Tilt3D>
               </motion.div>
             );
           })}
