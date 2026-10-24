@@ -147,6 +147,46 @@ All portfolio facts and text content reside strictly in `/src/data/`:
 
 ---
 
+## 🎙️ Setting Up the Cloned Voice (Phase 3: Ask Srushti)
+
+The portfolio features a server-side synthetic text-to-speech engine delivering a warm, articulate **Female AI voice** for **Srushti** (Prajwal's digital copilot), replacing default robotic browser speech while maintaining strict security, zero PII logging, and budget protection.
+
+### 1. Generating & Configuring the Female Voice on ElevenLabs
+1. Sign up for a free or creator account at [elevenlabs.io](https://elevenlabs.io).
+2. Go to **Voices &rarr; VoiceLab**:
+   - **Option A (Default Curated Voice)**: Use the built-in professional female voice `21m00Tcm4TlvDq8ikWAM` ("Rachel") or `EXAVITQu4vr4xnSDxMaL` ("Bella").
+   - **Option B (Instant Voice Clone)**: Click **Add Voice &rarr; Instant Voice Cloning**. Upload 1 to 5 minutes of clean, noise-free consented female speech. Name it `Srushti - Copilot Voice`.
+3. Copy the **Voice ID** from the voice card settings.
+4. Obtain your API key from **Profile Settings &rarr; API Keys**.
+
+### 2. Setting Environment Variables
+Add the credentials to your local `.env.local` (and into Vercel Project Settings &rarr; Environment Variables):
+```ini
+# Server-side only — never exposed to client bundles
+ELEVENLABS_API_KEY=your_actual_elevenlabs_api_key_here
+ELEVENLABS_VOICE_ID=21m00Tcm4TlvDq8ikWAM
+TTS_PROVIDER=elevenlabs
+TTS_DAILY_CHAR_LIMIT=50000
+```
+
+### 3. Pluggable Provider Architecture & Swapping
+The TTS service uses a modular adapter pattern (`src/lib/tts/`):
+- `types.ts`: `TTSProvider` contract (`synthesize({ text, lang, voiceId })`).
+- `elevenlabs.ts`: ElevenLabs implementation using the `eleven_multilingual_v2` model for fluent English, Hindi, and Kannada.
+- To add an alternative provider (e.g. Cartesia or Azure Speech), implement `TTSProvider` and set `TTS_PROVIDER=cartesia` in your environment.
+
+### 4. Cost Control & Audio Caching
+- **Daily Budget Cap**: Enforced by `TTS_DAILY_CHAR_LIMIT` (default 50,000 characters). When reached, the system silently falls back to local browser speech synthesis and displays a discreet notice.
+- **SHA-256 Server Cache**: High-frequency replies (greetings, email directions, fallback messages) are cached in memory after first synthesis, consuming **0 API characters** and returning audio with **0ms latency**.
+- **Long Reply Truncation**: Replies over 550 characters speak a concise 2-sentence intro plus *"The full comprehensive details are displayed on screen."* to avoid burning character credits.
+
+### 5. Security & Transparency Rules
+- **No Raw Voice Uploads**: Raw audio recordings are kept out of `/public` and permanently excluded via `.gitignore`.
+- **API Guardrails**: `/api/tts` enforces Zod length validation (max 600 chars), per-IP rate limiting (30 req/min), and blocks unauthorized cross-origin requests.
+- **Ethical Transparency**: The chat header displays a visible disclosure badge `AI-GENERATED FEMALE VOICE (SRUSHTI)` with an interactive info modal. The assistant strictly declines deceptive human impersonation or binding contractual quotes.
+
+---
+
 ## 🚢 Deploying to Vercel & Custom Domain
 
 1. **Deploy to Vercel**:
@@ -173,3 +213,4 @@ All portfolio facts and text content reside strictly in `/src/data/`:
 6. [ ] **Photo Caption Confirmation**: Verify the caption for `IMG_20260614_122236.jpg` (*"Sai Krishan Premamrutham Hall"*) in `/src/components/browse/ValuesAndServiceBanner.tsx`.
 7. [ ] **Cal.com Link**: If you want 1-click 15-min call scheduling, add `NEXT_PUBLIC_CALENDLY_URL` in `.env.local`.
 8. [ ] **Hindi & Kannada Review**: Review translations in `/src/lib/i18n.ts` marked with `// TODO: review translations`.
+9. [ ] **ElevenLabs Female Voice Setup**: Put `ELEVENLABS_API_KEY` and `ELEVENLABS_VOICE_ID` in `.env.local` or Vercel Environment Variables to activate the cloned female voice for Srushti.

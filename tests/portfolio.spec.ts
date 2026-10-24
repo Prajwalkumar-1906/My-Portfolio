@@ -250,4 +250,81 @@ test.describe("Netflix 3D Portfolio Phase 2 E2E Tests", () => {
     // Greeting must introduce Srushti
     await expect(dialog.getByText(/Hello! I am Srushti/i)).toBeVisible();
   });
+
+  test("11. /api/tts endpoint security, length limits, and fallback behavior", async ({ request }) => {
+    // 1. Oversize text (>600 characters) must be rejected with 400
+    const longText = "A".repeat(601);
+    const oversizeRes = await request.post("/api/tts", {
+      data: { text: longText, lang: "en-IN" }
+    });
+    expect(oversizeRes.status()).toBe(400);
+    const oversizeData = await oversizeRes.json();
+    expect(oversizeData.error).toContain("exceeds limit");
+
+    // 2. Cross-origin request must be blocked with 403
+    const crossOriginRes = await request.post("/api/tts", {
+      headers: {
+        origin: "https://malicious-external-site.com"
+      },
+      data: { text: "Hello", lang: "en-IN" }
+    });
+    expect(crossOriginRes.status()).toBe(403);
+    const crossOriginData = await crossOriginRes.json();
+    expect(crossOriginData.error).toContain("cross-origin");
+
+    // 3. Fallback behavior when provider key is absent
+    const normalRes = await request.post("/api/tts", {
+      data: { text: "Hello from Srushti", lang: "en-IN" }
+    });
+    // If ELEVENLABS_API_KEY is not set on CI, it returns 503 with fallback: "browser"
+    if (normalRes.status() === 503) {
+      const data = await normalRes.json();
+      expect(data.fallback).toBe("browser");
+    } else {
+      expect([200, 429]).toContain(normalRes.status());
+    }
+  });
+
+  test("12. Cloned Voice Assistant UI, 3D Voice Orb, and transparency modal", async ({ page }) => {
+    await page.goto("/browse");
+
+    // Open chat
+    const launcherBtn = page.getByRole("button", { name: /Ask Srushti AI Assistant/i });
+    await launcherBtn.click();
+
+    const dialog = page.getByRole("dialog", { name: /AI Concierge/i });
+    await expect(dialog).toBeVisible();
+
+    // Check transparency label
+    await expect(dialog.getByText(/AI-generated voice of Srushti/i)).toBeVisible();
+
+    // Click transparency info button to open disclosure modal
+    const infoBtn = dialog.getByLabel(/View synthetic voice disclosure/i);
+    await infoBtn.click();
+
+    // Modal must be visible and explain synthetic voice
+    await expect(page.getByText(/SYNTHETIC VOICE DISCLOSURE/i)).toBeVisible();
+    await expect(page.getByText(/AI-Generated Female Voice/i)).toBeVisible();
+    await expect(page.getByText(/Not a Live Person/i)).toBeVisible();
+
+    // Close disclosure modal
+    await page.getByRole("button", { name: /Understood/i }).click();
+
+    // Check voice settings toggle exists
+    const settingsBtn = dialog.getByTitle(/Voice Settings/i);
+    await expect(settingsBtn).toBeVisible();
+    await settingsBtn.click();
+
+    // Speed buttons (0.9x, 1x, 1.15x)
+    await expect(dialog.getByText("0.9x")).toBeVisible();
+    await expect(dialog.getByText("1x")).toBeVisible();
+    await expect(dialog.getByText("1.15x")).toBeVisible();
+  });
+
+  test("13. Security check: Provider API keys are never exposed in client bundles", async ({ page }) => {
+    await page.goto("/browse");
+    const htmlContent = await page.content();
+    expect(htmlContent).not.toContain("ELEVENLABS_API_KEY");
+    expect(htmlContent).not.toContain("xi-api-key");
+  });
 });

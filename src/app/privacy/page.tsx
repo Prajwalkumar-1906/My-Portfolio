@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Shield, ArrowLeft, Lock, Cookie, EyeOff, CheckCircle } from "lucide-react";
+import { Shield, ArrowLeft, Lock, Cookie, EyeOff, CheckCircle, Volume2 } from "lucide-react";
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
 
@@ -86,6 +86,22 @@ export default function PrivacyPage() {
             <p className="text-zinc-400">
               All credentials, metrics, workshop participant figures, and academic achievements showcased on this portfolio reflect verified facts from Prajwalkumar Madiwal&apos;s academic career at Rajarajeswari College of Engineering (RRCE) and engineering internship at ABB. AI assistants on this platform are strictly grounded to avoid hallucination or manufactured claims.
             </p>
+          </section>
+
+          <section className="p-6 rounded-xl bg-white/5 border border-white/10">
+            <h2 className="text-lg font-bold text-white flex items-center gap-2 mb-3">
+              <Volume2 className="w-5 h-5 text-[#FF6A00]" />
+              5. Ethical AI Voice & Cloned Assistant Disclosure
+            </h2>
+            <p className="text-zinc-400 mb-2">
+              The portfolio chatbot incorporates a synthetic female AI voice for &ldquo;Srushti&rdquo; (Prajwal&apos;s digital copilot), synthesized via ethical server-side text-to-speech with daily usage budgets and rate limits:
+            </p>
+            <ul className="list-disc list-inside space-y-1.5 text-zinc-400 text-xs">
+              <li><strong className="text-zinc-200">Synthetic Voice Identification:</strong> Visitors are clearly notified that spoken replies originate from a synthetic AI voice model and not a live human representative.</li>
+              <li><strong className="text-zinc-200">Strict Non-Impersonation:</strong> The voice assistant will never claim to be a live person, negotiate deals, or agree to binding agreements.</li>
+              <li><strong className="text-zinc-200">Audio Privacy:</strong> Voice queries spoken through the microphone are processed locally in your browser via the Web Speech API; no visitor voice recordings are stored or saved on our servers.</li>
+              <li><strong className="text-zinc-200">Official Inquiries:</strong> Any contractual, recruitment, or speaking decisions require written communication directly with Prajwalkumar Madiwal at <code className="text-zinc-200 bg-black/40 px-1.5 py-0.5 rounded">pkm.digi@gmail.com</code>.</li>
+            </ul>
           </section>
 
           <div className="pt-4 text-xs text-zinc-500 border-t border-white/5">

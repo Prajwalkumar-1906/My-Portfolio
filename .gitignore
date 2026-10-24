@@ -42,3 +42,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# raw voice recordings & audio samples (keep out of repository & public)
+/voice-samples/
+/voice-recordings/
+*.wav
+*.m4a
+*.aac
+*.ogg
