@@ -1,0 +1,56 @@
+{
+  "assistantName": "PKM Assistant",
+  "owner": "Prajwalkumar Madiwal",
+  "fallbackMessage": "I don't have that information; you can email Prajwal at pkm.digi@gmail.com.",
+  "systemPrompt": "You are PKM Assistant, the official AI concierge for Prajwalkumar Madiwal's interactive portfolio. You are polite, crisp, professional, and knowledgeable. You MUST answer ONLY from the grounded knowledge provided below. Never invent facts, salary expectations, dates, or prices. If you do not have verified knowledge about a query, say: 'I don't have that information; you can email Prajwal at pkm.digi@gmail.com.' You can recommend users visit /recruiter, /browse, /sessions, or /network based on their goals.",
+  "quickChips": [
+    "Tell me about Prajwal",
+    "Does he know PyTorch & AI?",
+    "Show featured projects",
+    "Is he open to work?",
+    "Book a session / pricing",
+    "Download resume"
+  ],
+  "faq": [
+    {
+      "keywords": ["who are you", "who is prajwal", "about prajwal", "introduce", "bio", "overview"],
+      "answer": "Prajwalkumar Madiwal is a final-year Computer Science Engineering student (2023-2027) at Rajarajeswari College of Engineering (RRCE), Bengaluru, and an AI Intern at ABB. He specializes in AI/ML & Full-Stack development as well as Data Analytics and Business Development. He is also an active public speaker, mentor, and community manager."
+    },
+    {
+      "keywords": ["pytorch", "machine learning", "ai", "xgboost", "shap", "fairlearn", "deep learning"],
+      "answer": "Yes! Prajwal has strong hands-on experience in AI/ML. He uses PyTorch, scikit-learn, XGBoost, SHAP for Explainable AI, and Fairlearn for bias mitigation. At ABB, he contributes to industrial AI/ML models, and his project PlaceWise demonstrates ethical and transparent placement prediction with 80%+ test coverage."
+    },
+    {
+      "keywords": ["projects", "work", "placewise", "chukta", "portfolio", "code"],
+      "answer": "Prajwal's flagship projects include:\n1. PlaceWise: Explainable & Fair Campus Placement Predictor (Python, XGBoost, SHAP, Fairlearn, Streamlit, Optuna).\n2. Chukta: High-concurrency group-expense settlement platform (Next.js, TypeScript, Node.js, PostgreSQL, Redis, Socket.IO, integer paise arithmetic).\n3. Predictive Customer Retention Engine: Churn prediction pipeline for Galaxy Systems.\n4. AI Interview Coach: Real-time feedback tool currently in progress.\nYou can check the projects section on the Recruiter or Browse page!"
+    },
+    {
+      "keywords": ["hire", "open to work", "availability", "job", "recruiter", "roles", "fresher"],
+      "answer": "Prajwal is Open to Work! He is seeking roles as an AI/ML Engineer, Full-Stack Developer, Data Analyst, Business Analyst, or Business Development Associate in IT companies. You can explore his Recruiter profile at /recruiter, download his resume, or email him directly at pkm.digi@gmail.com."
+    },
+    {
+      "keywords": ["resume", "cv", "download", "pdf"],
+      "answer": "Prajwal offers two specialized resume tracks:\n- Season 1: AI/ML & Full-Stack Engineer Resume\n- Season 2: Data Analyst & Business Development Resume\nBoth can be downloaded directly from the /recruiter page or via the quick action in the navigation bar!"
+    },
+    {
+      "keywords": ["speak", "speaker", "workshop", "session", "book", "cost", "pricing", "fee", "fees"],
+      "answer": "Prajwal delivers keynotes, workshops, and training on AI & Tech, Resume Review, Interview Prep, and Career Coaching for colleges, universities, corporate parks, and hackathons. Pricing: Fees are per session and vary by location, audience size, and travel. You can request an exact quote via the booking form at /sessions."
+    },
+    {
+      "keywords": ["contact", "email", "phone", "linkedin", "message", "reach"],
+      "answer": "You can reach Prajwal via:\n- Email: pkm.digi@gmail.com\n- LinkedIn: https://www.linkedin.com/in/prajwalkumarm/ (8K+ followers)\n- GitHub: https://github.com/Prajwalkumar-1906\nOr send a message using the interactive contact form at /contact."
+    },
+    {
+      "keywords": ["education", "college", "school", "rrce", "tungal", "sathya sai"],
+      "answer": "Prajwal is pursuing his B.E. in Computer Science & Engineering at Rajarajeswari College of Engineering (RRCE), Bengaluru (2023-2027, CGPA 7.7/10). He completed Senior Secondary (XII Science) at Tungal PU College, Vijayapura (2021-2023, 82%), and foundational schooling at Sathya Sai Grama."
+    },
+    {
+      "keywords": ["experience", "abb", "internship", "galaxy systems", "dream den"],
+      "answer": "Prajwal's experience includes:\n- AI Intern at ABB, Bengaluru (Sep 2026 - Present, stipend-based)\n- AICTE Trainee in AI & ML at Karnataka Social Service Trust (Sep 2026 - Present)\n- Business Development Intern at Galaxy Systems (150+ leads/mo, +20% proposal conversion)\n- Sales & Market Research Intern at Dream Den Community (surveyed 200+ students, onboarded 15 food vendors)."
+    },
+    {
+      "keywords": ["certifications", "certificates", "google", "anthropic", "nvidia", "oracle"],
+      "answer": "Prajwal holds certifications including: Anthropic (AI Fluency), Google (Gemini Enterprise Application, Digital Marketing), NVIDIA (AI on Jetson Nano), Oracle Cloud Infrastructure (OCFA), Salesforce (CRM Fundamentals), and Macquarie University (Excel Skills for Business)."
+    }
+  ]
+}
