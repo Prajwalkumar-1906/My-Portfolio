@@ -1,9 +1,15 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Mail, MapPin, Clock, MessageSquare } from "lucide-react";
 import { Linkedin, Github } from "@/components/ui/BrandIcons";
 import { PROFILE } from "@/data/profile";
+
+export const metadata: Metadata = {
+  title: "Contact & Direct Messaging | Prajwalkumar Madiwal",
+  description: "Send direct messages to Prajwalkumar Madiwal on the website or connect via email (pkm.digi@gmail.com), WhatsApp, and LinkedIn."
+};
 
 export default function ContactPage() {
   return (

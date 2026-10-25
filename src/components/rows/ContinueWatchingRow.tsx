@@ -1,6 +1,6 @@
 "use client";
 
-import { Play, Sparkles, Clock, AlertCircle } from "lucide-react";
+import { Play, Clock } from "lucide-react";
 import { sound } from "@/lib/sound";
 
 interface ContinueWatchingProps {

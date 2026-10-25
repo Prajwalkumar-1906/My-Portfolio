@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Play, X, Sparkles, ExternalLink, Maximize2 } from "lucide-react";
+import { X, Maximize2 } from "lucide-react";
 import { sound } from "@/lib/sound";
 
 interface ReelItem {

@@ -12,7 +12,6 @@ export interface DirectMessage {
 
 // In-memory message store surviving server hot-reloads
 declare global {
-  // eslint-disable-next-line no-var
   var __prajwal_messages__: DirectMessage[] | undefined;
 }
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle, ArrowRight, RotateCcw, Sparkles, Layers, Briefcase } from "lucide-react";
+import { CheckCircle, ArrowRight, RotateCcw, Briefcase } from "lucide-react";
 import { sound } from "@/lib/sound";
 
 interface RoleFitFinderProps {

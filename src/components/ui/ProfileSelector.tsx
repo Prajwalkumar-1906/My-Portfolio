@@ -70,7 +70,6 @@ import { CinematicLogo } from "./CinematicLogo";
 
 export function ProfileSelector() {
   const router = useRouter();
-  const [hoveredProfile, setHoveredProfile] = useState<string | null>(null);
 
   const handleSelect = (profile: ProfileOption) => {
     // Play the iconic Netflix sound when entering a profile section
@@ -111,11 +110,7 @@ export function ProfileSelector() {
               <div
                 key={p.id}
                 onClick={() => handleSelect(p)}
-                onMouseEnter={() => {
-                  setHoveredProfile(p.id);
-                  sound.playHover();
-                }}
-                onMouseLeave={() => setHoveredProfile(null)}
+                onMouseEnter={() => sound.playHover()}
                 tabIndex={0}
                 role="button"
                 aria-label={`Select ${p.name} profile`}

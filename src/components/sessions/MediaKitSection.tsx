@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Download, Copy, Check, ExternalLink, Mic, FileText, CheckCircle2 } from "lucide-react";
+import { Download, Copy, Check, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 import { sound } from "@/lib/sound";
 import { SERVICES } from "@/data/services";

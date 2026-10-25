@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Play, Info, Bookmark, Check, ExternalLink } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play, ExternalLink } from "lucide-react";
 import { Github } from "@/components/ui/BrandIcons";
 import { sound } from "@/lib/sound";
 

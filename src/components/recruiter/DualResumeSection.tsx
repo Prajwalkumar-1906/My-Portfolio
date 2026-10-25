@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Download, FileText, CheckCircle2, QrCode, ExternalLink } from "lucide-react";
+import { Download, CheckCircle2, ExternalLink } from "lucide-react";
 import { sound } from "@/lib/sound";
 
 export function DualResumeSection() {
@@ -97,11 +97,12 @@ export function DualResumeSection() {
 
                 {/* QR Code Container */}
                 <div className="flex-shrink-0 p-1.5 rounded-xl bg-[#141414] border border-white/15 text-center">
-                  <img
+                  <Image
                     src={res.qrUrl}
                     alt={`QR Code for ${res.title}`}
                     width={80}
                     height={80}
+                    unoptimized
                     className="w-20 h-20 rounded block"
                   />
                   <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-tighter mt-1 block">

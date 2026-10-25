@@ -10,7 +10,6 @@ import {
   Volume2,
   VolumeX,
   Film,
-  Sparkles,
   ChevronDown,
   Briefcase,
   Compass,
@@ -18,8 +17,7 @@ import {
   Users,
   Share2,
   Download,
-  Languages,
-  Play
+  Languages
 } from "lucide-react";
 import { sound } from "@/lib/sound";
 import { PROFILES } from "./ProfileSelector";
@@ -32,7 +30,7 @@ import { CinematicLogo } from "./CinematicLogo";
 export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [isSoundOn, setIsSoundOn] = useState(true);
+  const [isSoundOn, setIsSoundOn] = useState(() => (typeof window !== "undefined" ? sound.isEnabled() : true));
   const [isCinemaMode, setIsCinemaMode] = useState(false);
   const [shortlistCount, setShortlistCount] = useState(0);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
@@ -41,8 +39,6 @@ export function Navbar() {
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
 
   useEffect(() => {
-    setIsSoundOn(sound.isEnabled());
-
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
     };
@@ -308,10 +304,8 @@ export function Navbar() {
                   </div>
 
                   <div className="py-1">
-                    {PROFILES.map((p) => {
-                      const Icon = p.icon;
-                      return (
-                        <Link
+                    {PROFILES.map((p) => (
+                      <Link
                           key={p.id}
                           href={p.route}
                           onClick={() => sound.playSelect()}
@@ -331,8 +325,7 @@ export function Navbar() {
                             <div className="text-[10px] text-zinc-400 truncate">{p.label}</div>
                           </div>
                         </Link>
-                      );
-                    })}
+                      ))}
                   </div>
 
                   {/* Connect & Socials Strip inside Dropdown */}

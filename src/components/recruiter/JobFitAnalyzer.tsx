@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Sparkles, CheckCircle2, AlertTriangle, ArrowRight, RefreshCw, ShieldAlert, FileText, Check } from "lucide-react";
+import { Sparkles, CheckCircle2, AlertTriangle, ArrowRight, RefreshCw, ShieldAlert } from "lucide-react";
 import { sound } from "@/lib/sound";
 
 interface FitResult {

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import confetti from "canvas-confetti";
 import { sound } from "@/lib/sound";
-import { Sparkles, X, Award, Film, Languages, Trophy, Heart } from "lucide-react";
+import { Sparkles, X, Film, Languages, Trophy, Heart } from "lucide-react";
 
 const KONAMI_CODE = [
   "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown",
