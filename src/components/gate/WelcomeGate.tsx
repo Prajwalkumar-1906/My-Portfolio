@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useMotionValue, useTransform } from "framer-motion";
@@ -37,6 +37,14 @@ export function WelcomeGate({ onEnter, onSkipToRecruiter }: WelcomeGateProps) {
   const rotateY = useTransform(mouseX, [-300, 300], [-6, 6]);
 
   const enterBtnRef = useRef<HTMLButtonElement | null>(null);
+
+  const handleEnter = useCallback(() => {
+    localStorage.setItem("pkm_visited_before", "true");
+    sound.setEnabled(soundActive);
+    // Always trigger the iconic Netflix welcome sound on user gesture enter
+    sound.playTudumChord(true);
+    onEnter(soundActive);
+  }, [soundActive, onEnter]);
 
   useEffect(() => {
     // 1. Time-aware greeting & Returning visitor check
@@ -122,7 +130,7 @@ export function WelcomeGate({ onEnter, onSkipToRecruiter }: WelcomeGateProps) {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [assetsLoaded, soundActive]);
+  }, [assetsLoaded, handleEnter]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -144,14 +152,6 @@ export function WelcomeGate({ onEnter, onSkipToRecruiter }: WelcomeGateProps) {
     if (next) {
       sound.playTudumChord(true);
     }
-  };
-
-  const handleEnter = () => {
-    localStorage.setItem("pkm_visited_before", "true");
-    sound.setEnabled(soundActive);
-    // Always trigger the iconic Netflix welcome sound on user gesture enter
-    sound.playTudumChord(true);
-    onEnter(soundActive);
   };
 
   const trackOutbound = (platform: string) => {

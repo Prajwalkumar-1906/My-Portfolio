@@ -32,6 +32,35 @@ interface Message {
   isFallback?: boolean;
 }
 
+interface SpeechRecognitionResultItem {
+  transcript: string;
+}
+
+interface SpeechRecognitionResultList {
+  [index: number]: {
+    [index: number]: SpeechRecognitionResultItem;
+  };
+  length: number;
+}
+
+interface CustomSpeechRecognitionEvent {
+  results: SpeechRecognitionResultList;
+}
+
+interface SpeechRecognitionInstance {
+  continuous: boolean;
+  interimResults: boolean;
+  lang: string;
+  start: () => void;
+  stop: () => void;
+  onstart: (() => void) | null;
+  onresult: ((event: CustomSpeechRecognitionEvent) => void) | null;
+  onerror: (() => void) | null;
+  onend: (() => void) | null;
+}
+
+type SpeechRecognitionConstructor = new () => SpeechRecognitionInstance;
+
 export function ChatWidget() {
   const router = useRouter();
   const pathname = usePathname();
@@ -62,7 +91,7 @@ export function ChatWidget() {
   const [showTransparencyModal, setShowTransparencyModal] = useState(false);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const recognitionRef = useRef<any>(null);
+  const recognitionRef = useRef<SpeechRecognitionInstance | null>(null);
   const micStreamRef = useRef<MediaStream | null>(null);
   const micAnalyserRef = useRef<AnalyserNode | null>(null);
   const micAnimRef = useRef<number | null>(null);
@@ -179,10 +208,15 @@ export function ChatWidget() {
   const toggleListening = () => {
     if (typeof window === "undefined") return;
 
-    const SpeechRecognition =
-      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const windowWithSpeech = window as unknown as {
+      SpeechRecognition?: SpeechRecognitionConstructor;
+      webkitSpeechRecognition?: SpeechRecognitionConstructor;
+    };
 
-    if (!SpeechRecognition) {
+    const SpeechRecognitionClass =
+      windowWithSpeech.SpeechRecognition || windowWithSpeech.webkitSpeechRecognition;
+
+    if (!SpeechRecognitionClass) {
       alert("Web Speech voice input is not supported in this browser. You can type your question!");
       return;
     }
@@ -195,7 +229,7 @@ export function ChatWidget() {
     }
 
     try {
-      const recognition = new SpeechRecognition();
+      const recognition = new SpeechRecognitionClass();
       recognition.continuous = false;
       recognition.interimResults = true;
       recognition.lang = selectedLang;
@@ -206,9 +240,10 @@ export function ChatWidget() {
         startMicLevelTracking();
       };
 
-      recognition.onresult = (event: any) => {
-        const transcript = Array.from(event.results)
-          .map((res: any) => res[0].transcript)
+      recognition.onresult = (event: CustomSpeechRecognitionEvent) => {
+        const resultsArray = Array.from({ length: event.results.length }, (_, i) => event.results[i]);
+        const transcript = resultsArray
+          .map((res) => res[0]?.transcript || "")
           .join("");
         setInput(transcript);
       };

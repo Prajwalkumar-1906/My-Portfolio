@@ -586,7 +586,7 @@ function RecruiterContent() {
             Professional Endorsements & Recommendations
           </h4>
           <p className="text-xs text-zinc-400 max-w-md mx-auto mt-1">
-            // TODO: Add authentic recommendations from managers at ABB, KSST mentors, and collegiate faculties once submitted.
+            Endorsements from mentors at ABB, KSST, and collegiate faculties will appear here once submitted.
           </p>
         </div>
       </section>
