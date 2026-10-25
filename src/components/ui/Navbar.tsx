@@ -386,13 +386,31 @@ export function Navbar() {
                       Who&apos;s Watching? Selector Screen
                     </Link>
                     <a
+                      href="/resumes/Prajwalkumar_Madiwal_AIML_FullStack_Resume.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-1.5 text-xs text-zinc-300 hover:text-white hover:bg-white/5 transition-colors"
+                    >
+                      <Download className="w-3.5 h-3.5 text-[#E50914]" />
+                      AIML & Full-Stack Resume
+                    </a>
+                    <a
+                      href="/resumes/Prajwalkumar_Madiwal_Data_Analyst_Resume.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-1.5 text-xs text-zinc-300 hover:text-white hover:bg-white/5 transition-colors"
+                    >
+                      <Download className="w-3.5 h-3.5 text-[#FF6A00]" />
+                      Data Scientist & Business Resume
+                    </a>
+                    <a
                       href="/resumes/Prajwalkumar_Madiwal_Complete_Portfolio.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 text-xs text-[#E50914] font-semibold hover:bg-white/5 transition-colors"
+                      className="flex items-center gap-2 px-4 py-1.5 text-xs text-[#E50914] font-semibold hover:bg-white/5 transition-colors"
                     >
                       <Download className="w-3.5 h-3.5" />
-                      Download Complete Dossier (PDF)
+                      Complete Dossier (Both Tracks)
                     </a>
                   </div>
                 </div>

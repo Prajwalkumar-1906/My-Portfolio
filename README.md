@@ -207,7 +207,7 @@ The TTS service uses a modular adapter pattern (`src/lib/tts/`):
 
 1. [ ] **Web3Forms Key**: Get a free key at [web3forms.com](https://web3forms.com) pointing to `pkm.digi@gmail.com` and put it in `.env.local` / Vercel.
 2. [ ] **Gemini API Key**: Create a free API key at [Google AI Studio](https://aistudio.google.com/app/apikey) and put it in `.env.local` / Vercel.
-3. [ ] **Resume PDFs**: Replace `/public/resumes/` files with your latest official exported PDFs when ready.
+3. [x] **Resume PDFs**: Updated with latest official exported PDFs (Track 1: AIML & Full-Stack, Track 2: Data Scientist & Business Roles, and Combined Portfolio Dossier).
 4. [ ] **Vendor Growth Pipeline Tech Stack**: Confirm finalized tools/frameworks for `technologies: []` in `/src/data/projects.ts` (currently marked with `// TODO: add stack`).
 5. [ ] **Sathya Sai Grama Schooling Details**: Add specific completion years and highlights in `/src/data/education.ts` (currently marked with `// TODO: add details`).
 6. [ ] **Photo Caption Confirmation**: Verify the caption for `IMG_20260614_122236.jpg` (*"Sai Krishan Premamrutham Hall"*) in `/src/components/browse/ValuesAndServiceBanner.tsx`.

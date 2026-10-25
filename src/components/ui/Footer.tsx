@@ -111,12 +111,17 @@ export function Footer() {
             <ul className="space-y-2">
               <li>
                 <a href="/resumes/Prajwalkumar_Madiwal_AIML_FullStack_Resume.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:underline">
-                  AI/ML Resume (PDF)
+                  AI/ML & Full-Stack Resume (PDF)
                 </a>
               </li>
               <li>
                 <a href="/resumes/Prajwalkumar_Madiwal_Data_Analyst_Resume.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:underline">
-                  Data Analyst Resume (PDF)
+                  Data Scientist & Business Resume (PDF)
+                </a>
+              </li>
+              <li>
+                <a href="/resumes/Prajwalkumar_Madiwal_Complete_Portfolio.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:underline">
+                  Complete Portfolio Dossier (Both Resumes)
                 </a>
               </li>
               <li>

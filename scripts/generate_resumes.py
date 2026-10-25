@@ -245,7 +245,37 @@ def create_combined_resume():
     doc.build(story)
     print("Created Combined Portfolio PDF")
 
+def sync_from_desktop_if_present():
+    src1 = r"D:\Desktop\RESUME\Prajwalkumar_Madiwal_Resume.pdf"
+    src2 = r"D:\Desktop\RESUME\Prajwalkumar_Madiwal_Resume2.pdf"
+    if os.path.exists(src1) and os.path.exists(src2):
+        import shutil
+        import pypdf
+
+        os.makedirs("public/resumes", exist_ok=True)
+        shutil.copyfile(src1, "public/resumes/Prajwalkumar_Madiwal_AIML_FullStack_Resume.pdf")
+        shutil.copyfile(src1, "public/resumes/Prajwalkumar_Madiwal_Resume.pdf")
+
+        shutil.copyfile(src2, "public/resumes/Prajwalkumar_Madiwal_Data_Analyst_Resume.pdf")
+        shutil.copyfile(src2, "public/resumes/Prajwalkumar_Madiwal_Data_Scientist_Business_Resume.pdf")
+        shutil.copyfile(src2, "public/resumes/Prajwalkumar_Madiwal_Resume2.pdf")
+
+        writer = pypdf.PdfWriter()
+        r1 = pypdf.PdfReader(src1)
+        r2 = pypdf.PdfReader(src2)
+        for page in r1.pages:
+            writer.add_page(page)
+        for page in r2.pages:
+            writer.add_page(page)
+        with open("public/resumes/Prajwalkumar_Madiwal_Complete_Portfolio.pdf", "wb") as f:
+            writer.write(f)
+        print("Synced official resumes from D:\\Desktop\\RESUME and merged into Complete Portfolio Dossier")
+        return True
+    return False
+
 if __name__ == "__main__":
-    create_aiml_resume()
+    if not sync_from_desktop_if_present():
+        create_aiml_resume()
+        create_combined_resume()
     create_speaker_kit()
-    create_combined_resume()
+

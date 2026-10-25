@@ -150,7 +150,7 @@ export function CommandPalette() {
     },
     {
       id: "download-aiml",
-      title: "Download AI/ML & Full-Stack Resume (PDF)",
+      title: "Download AIML & Full-Stack Resume (PDF)",
       category: "Actions",
       icon: Download,
       action: () => {
@@ -160,11 +160,21 @@ export function CommandPalette() {
     },
     {
       id: "download-data",
-      title: "Download Data Analyst Resume (PDF)",
+      title: "Download Data Scientist & Business Resume (PDF)",
       category: "Actions",
       icon: Download,
       action: () => {
         window.open("/resumes/Prajwalkumar_Madiwal_Data_Analyst_Resume.pdf", "_blank");
+        setIsOpen(false);
+      }
+    },
+    {
+      id: "download-complete",
+      title: "Download Complete Portfolio Dossier (Both Resumes PDF)",
+      category: "Actions",
+      icon: Download,
+      action: () => {
+        window.open("/resumes/Prajwalkumar_Madiwal_Complete_Portfolio.pdf", "_blank");
         setIsOpen(false);
       }
     },

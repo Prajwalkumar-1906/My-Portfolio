@@ -75,22 +75,22 @@ export const PROFILE: ProfileData = {
     {
       id: "aiml",
       seasonLabel: "Season 1",
-      roleTitle: "AI/ML & Full-Stack Engineer",
+      roleTitle: "AI/ML Engineer & Full-Stack Developer",
       summary: "Final-year Computer Science Engineering student with hands-on experience in AI/ML and full-stack development, building intelligent, data-driven applications. Proficient in Python, machine learning, explainable AI (SHAP), fairness-aware modelling and modern web technologies. Delivered end-to-end projects in AI-powered placement prediction, bias mitigation and real-time expense settlement. Strong problem-solving, product-oriented mindset, hackathon achievements, technical community leadership and public speaking.",
       resumePdf: "/resumes/Prajwalkumar_Madiwal_AIML_FullStack_Resume.pdf",
       resumeFileName: "Prajwalkumar_Madiwal_AIML_FullStack_Resume.pdf",
       preferredRoles: ["AI/ML Engineer", "Full-Stack Developer", "Software Engineer"],
-      skillsHighlight: ["Python", "PyTorch", "XGBoost", "SHAP", "Next.js", "PostgreSQL", "Redis", "Docker"]
+      skillsHighlight: ["Python", "PyTorch", "XGBoost", "SHAP", "LangChain", "Next.js", "PostgreSQL", "Redis", "Docker"]
     },
     {
       id: "data_ba",
       seasonLabel: "Season 2",
-      roleTitle: "Data Analyst | Business Analyst | Business Development Associate",
-      summary: "Final-year B.E. CSE student (2027) combining data analytics with hands-on business development. Proficient in Python, SQL, Power BI and Excel for data cleaning, EDA, machine learning and dashboarding, plus lead generation, market research and client outreach from two internships. Seeking Data Analyst, Business Analyst or Business Development Associate roles.",
+      roleTitle: "Data Scientist & Business Roles (Data & Business Analyst)",
+      summary: "Final-year B.E. CSE student (2027) combining data analytics with hands-on business development. Proficient in Python, SQL, Power BI and Excel for data cleaning, EDA, machine learning and dashboarding, plus lead generation, market research and client outreach from two internships. Seeking Data Scientist, Data Analyst, Business Analyst or Business Development Associate roles.",
       resumePdf: "/resumes/Prajwalkumar_Madiwal_Data_Analyst_Resume.pdf",
       resumeFileName: "Prajwalkumar_Madiwal_Data_Analyst_Resume.pdf",
-      preferredRoles: ["Data Analyst", "Business Analyst", "Business Development Associate"],
-      skillsHighlight: ["Python", "SQL", "Power BI", "Excel (VLOOKUP, Pivot, Dashboards)", "EDA", "Lead Gen", "Sales Navigator"]
+      preferredRoles: ["Data Scientist", "Data Analyst", "Business Analyst", "Business Development Associate"],
+      skillsHighlight: ["Python", "SQL", "MySQL", "Power BI", "Tableau", "Excel (VLOOKUP, Pivot, Dashboards)", "EDA", "Machine Learning", "Lead Gen", "Sales Navigator"]
     }
   ],
   elevatorPitch: "Hi! I am Prajwalkumar Madiwal, a final-year CSE engineer at RRCE Bengaluru and AI Intern at ABB. I build intelligent, fair, and scalable AI and full-stack applications like PlaceWise and Chukta, backed by proven data analytics and B2B growth execution. I'm actively looking for full-time opportunities in AI/ML, Full-Stack, and Data/Business Analytics."

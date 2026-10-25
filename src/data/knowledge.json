@@ -60,7 +60,7 @@
     },
     {
       "keywords": ["resume", "cv", "download", "pdf", "qr"],
-      "answer": "Prajwal provides two specialized resume tracks with QR codes for mobile scanning:\n- Season 1: AI/ML & Full-Stack Engineer Resume\n- Season 2: Data Analyst & Business Development Resume\nBoth can be downloaded directly from /recruiter or via the Command Palette (Ctrl+K)."
+      "answer": "Prajwal provides two specialized resume tracks with QR codes for mobile scanning:\n- Season 1: AI/ML & Full-Stack Developer Resume\n- Season 2: Data Scientist & Business Roles Resume (Data & Business Analyst)\nBoth can be downloaded directly from /recruiter, the navigation menu, or via the Command Palette (Ctrl+K)."
     },
     {
       "keywords": ["speak", "speaker", "workshop", "session", "book", "cost", "pricing", "fee", "fees", "quote"],
