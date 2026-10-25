@@ -10,7 +10,7 @@ interface WelcomeSplashProps {
 }
 
 export function WelcomeSplash({ onComplete }: WelcomeSplashProps) {
-  const [soundActive, setSoundActive] = useState(false);
+  const [soundActive, setSoundActive] = useState(true);
   const [stage, setStage] = useState<'sticker' | 'streak' | 'done'>('sticker');
 
   useEffect(() => {

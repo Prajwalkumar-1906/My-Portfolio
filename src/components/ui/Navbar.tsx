@@ -32,7 +32,7 @@ import { CinematicLogo } from "./CinematicLogo";
 export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [isSoundOn, setIsSoundOn] = useState(false);
+  const [isSoundOn, setIsSoundOn] = useState(true);
   const [isCinemaMode, setIsCinemaMode] = useState(false);
   const [shortlistCount, setShortlistCount] = useState(0);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);

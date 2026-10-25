@@ -3,13 +3,13 @@
 
 class SoundFX {
   private ctx: AudioContext | null = null;
-  private soundEnabled: boolean = false;
+  private soundEnabled: boolean = true;
 
   constructor() {
     if (typeof window !== "undefined") {
-      const stored = sessionStorage.getItem("pkm_sound_enabled");
-      // Default to true if set or enabled by user gesture
-      this.soundEnabled = stored === "true";
+      const stored = localStorage.getItem("pkm_sound_enabled") ?? sessionStorage.getItem("pkm_sound_enabled");
+      // Always keep sound on by default
+      this.soundEnabled = stored !== "false";
     }
   }
 
@@ -20,6 +20,7 @@ class SoundFX {
   public setEnabled(enabled: boolean): void {
     this.soundEnabled = enabled;
     if (typeof window !== "undefined") {
+      localStorage.setItem("pkm_sound_enabled", enabled ? "true" : "false");
       sessionStorage.setItem("pkm_sound_enabled", enabled ? "true" : "false");
     }
   }

@@ -26,7 +26,7 @@ const ROLES = [
 export function WelcomeGate({ onEnter, onSkipToRecruiter }: WelcomeGateProps) {
   const [greeting, setGreeting] = useState<string>("Welcome");
   const [roleIndex, setRoleIndex] = useState(0);
-  const [soundActive, setSoundActive] = useState(false);
+  const [soundActive, setSoundActive] = useState(true);
   const [assetsLoaded, setAssetsLoaded] = useState(false);
   const [progress, setProgress] = useState(15);
 
