@@ -415,24 +415,33 @@ export function ChatWidget() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 select-none">
-      {/* Floating Toggle Button with Netflix Pulse */}
+      {/* Floating Toggle Button with Netflix Pulse & Profile Thumbnail */}
       {!isOpen && (
         <button
           onClick={() => {
             sound.playSelect();
             setIsOpen(true);
           }}
-          className="relative group flex items-center gap-2.5 px-4 sm:px-5 py-3 rounded-full bg-gradient-to-r from-[#E50914] via-[#F40612] to-[#FF6A00] text-white font-bold text-xs sm:text-sm tracking-wide shadow-[0_10px_30px_rgba(229,9,20,0.5)] hover:scale-105 active:scale-95 transition-all duration-300"
+          className="relative group flex items-center gap-2.5 pl-2 pr-4 sm:pl-2.5 sm:pr-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#E50914] via-[#F40612] to-[#FF6A00] text-white font-bold text-xs sm:text-sm tracking-wide shadow-[0_10px_30px_rgba(229,9,20,0.5)] hover:scale-105 active:scale-95 transition-all duration-300"
           aria-label="Ask Srushti AI Assistant"
         >
           {/* Animated red ping ring */}
           <span className="absolute -inset-1 rounded-full bg-[#E50914] opacity-40 group-hover:opacity-75 blur-md animate-pulse" />
 
-          <Sparkles className="w-4 h-4 fill-white relative z-10 animate-spin-slow" />
-          <span className="relative z-10 font-bebas text-base tracking-wider">
+          {/* Profile thumbnail */}
+          <div className="relative z-10 w-8 h-8 rounded-full overflow-hidden border-2 border-white/80 shadow-md flex-shrink-0">
+            <img
+              src="/assets/webp/srushti_avatar.webp"
+              alt="Srushti Profile Thumbnail"
+              className="w-full h-full object-cover"
+            />
+            <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-400 border border-black animate-ping" />
+          </div>
+
+          <span className="relative z-10 font-bebas text-base sm:text-lg tracking-wider">
             ASK SRUSHTI
           </span>
-          <span className="relative z-10 hidden sm:inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+          <span className="relative z-10 hidden sm:inline-block w-2 h-2 rounded-full bg-emerald-400" />
         </button>
       )}
 
@@ -445,14 +454,22 @@ export function ChatWidget() {
           className="w-[92vw] sm:w-[440px] h-[580px] max-h-[85vh] bg-[#141414] border border-white/15 rounded-2xl shadow-2xl flex flex-col overflow-hidden text-white animate-in slide-in-from-bottom-5 duration-300"
         >
           {/* Top Bar with 3D AI Orb Visualizer & Voice Indicator */}
-          <div className="px-4 py-3 bg-[#181818] border-b border-white/10 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              {/* Interactive 3D Voice Orb */}
+          <div className="px-4 py-3 bg-[#181818] border-b border-white/10 flex items-center justify-between relative overflow-hidden">
+            {/* Subtle panoramic eyes backdrop */}
+            <div
+              className="absolute inset-0 opacity-15 pointer-events-none bg-cover bg-center mix-blend-luminosity"
+              style={{ backgroundImage: "url('/assets/webp/srushti_profile.webp')" }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#181818] via-[#181818]/80 to-[#181818]/95 pointer-events-none" />
+
+            <div className="flex items-center gap-3 relative z-10">
+              {/* Interactive 3D Voice Orb with Srushti Profile Thumbnail */}
               <VoiceOrb3D
                 audioLevel={audioLevel}
                 isListening={isListening}
                 isSpeaking={isSpeaking}
                 size="md"
+                avatarUrl="/assets/webp/srushti_avatar.webp"
               />
 
               <div>
@@ -655,8 +672,12 @@ export function ChatWidget() {
                 <div key={idx} className="space-y-1.5">
                   <div className={`flex gap-2.5 ${isAssistant ? "justify-start" : "justify-end"}`}>
                     {isAssistant && (
-                      <div className="w-6 h-6 rounded-full bg-[#E50914] flex-none flex items-center justify-center text-white text-[10px] font-bold shadow-md">
-                        S
+                      <div className="w-6 h-6 rounded-full overflow-hidden flex-none border border-red-500/60 shadow-md relative mt-0.5">
+                        <img
+                          src="/assets/webp/srushti_avatar.webp"
+                          alt="Srushti"
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                     )}
                     <div
@@ -705,9 +726,16 @@ export function ChatWidget() {
 
             {loading && (
               <div className="flex items-center gap-2 text-zinc-400 text-xs italic">
-                <span className="w-2 h-2 rounded-full bg-[#E50914] animate-bounce" />
-                <span className="w-2 h-2 rounded-full bg-[#E50914] animate-bounce delay-100" />
-                <span className="w-2 h-2 rounded-full bg-[#E50914] animate-bounce delay-200" />
+                <div className="w-5 h-5 rounded-full overflow-hidden border border-red-500/40 animate-pulse flex-shrink-0">
+                  <img
+                    src="/assets/webp/srushti_avatar.webp"
+                    alt="Srushti Thinking"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#E50914] animate-bounce" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#E50914] animate-bounce delay-100" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#E50914] animate-bounce delay-200" />
                 <span>Consulting portfolio facts...</span>
               </div>
             )}
@@ -806,6 +834,23 @@ export function ChatWidget() {
               >
                 <X className="w-4 h-4" />
               </button>
+            </div>
+
+            {/* Srushti Identity & Profile Card */}
+            <div className="flex items-center gap-3.5 p-3 mb-4 rounded-xl bg-white/5 border border-white/10">
+              <img
+                src="/assets/webp/srushti_avatar.webp"
+                alt="Srushti Avatar"
+                className="w-12 h-12 rounded-full object-cover border-2 border-[#E50914] shadow-lg flex-shrink-0"
+              />
+              <div>
+                <h4 className="font-bebas text-lg tracking-wide text-white leading-none">
+                  SRUSHTI (AI DIGITAL COPILOT)
+                </h4>
+                <p className="text-[11px] text-zinc-400 mt-1">
+                  Synthetic female copilot for Prajwalkumar Madiwal&apos;s interactive portfolio
+                </p>
+              </div>
             </div>
 
             <div className="space-y-3 text-xs text-zinc-300 leading-relaxed">

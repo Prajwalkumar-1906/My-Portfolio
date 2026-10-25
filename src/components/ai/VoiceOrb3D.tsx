@@ -9,6 +9,7 @@ interface VoiceOrb3DProps {
   isSpeaking?: boolean;
   size?: "sm" | "md" | "lg";
   className?: string;
+  avatarUrl?: string;
 }
 
 export function VoiceOrb3D({
@@ -16,7 +17,8 @@ export function VoiceOrb3D({
   isListening = false,
   isSpeaking = false,
   size = "md",
-  className = ""
+  className = "",
+  avatarUrl
 }: VoiceOrb3DProps) {
   const [smoothedLevel, setSmoothedLevel] = useState(0);
 
@@ -88,23 +90,36 @@ export function VoiceOrb3D({
         }}
       >
         <div className="w-full h-full rounded-full bg-black/90 flex items-center justify-center relative overflow-hidden backdrop-blur-sm">
-          {/* Inner Light Ripple */}
-          {(isSpeaking || isListening) && (
-            <div
-              className="absolute inset-0 rounded-full bg-white/20 animate-pulse pointer-events-none"
-              style={{
-                opacity: smoothedLevel * 0.8
-              }}
+          {avatarUrl ? (
+            <img
+              src={avatarUrl}
+              alt="Voice Assistant Avatar"
+              className="w-full h-full object-cover object-center pointer-events-none select-none"
             />
+          ) : (
+            !isListening && (
+              <Bot
+                className={`w-4 h-4 relative z-10 transition-colors ${
+                  isSpeaking ? "text-[#FF6A00]" : "text-white"
+                }`}
+              />
+            )
           )}
 
-          {isListening ? (
-            <Mic className="w-4 h-4 text-emerald-400 animate-pulse relative z-10" />
-          ) : (
-            <Bot
-              className={`w-4 h-4 relative z-10 transition-colors ${
-                isSpeaking ? "text-[#FF6A00]" : "text-white"
-              }`}
+          {/* Active Listening Mic badge */}
+          {isListening && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black/55 backdrop-blur-[1px]">
+              <Mic className="w-4 h-4 text-emerald-400 animate-pulse relative z-10" />
+            </div>
+          )}
+
+          {/* Inner Light Ripple overlay when speaking */}
+          {isSpeaking && (
+            <div
+              className="absolute inset-0 rounded-full bg-[#FF6A00]/25 animate-pulse pointer-events-none"
+              style={{
+                opacity: Math.max(0.15, smoothedLevel * 0.8)
+              }}
             />
           )}
         </div>

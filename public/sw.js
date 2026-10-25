@@ -1,5 +1,5 @@
 // Service Worker for Prajwalkumar Madiwal Streaming Portfolio Shell
-const CACHE_NAME = 'pkm-portfolio-shell-v2';
+const CACHE_NAME = 'pkm-portfolio-shell-v3';
 const STATIC_ASSETS = [
   '/',
   '/who',
@@ -8,7 +8,9 @@ const STATIC_ASSETS = [
   '/assets/webp/avatar_recruiter.webp',
   '/assets/webp/avatar_browse.webp',
   '/assets/webp/avatar_sessions.webp',
-  '/assets/webp/avatar_networker.webp'
+  '/assets/webp/avatar_networker.webp',
+  '/assets/webp/srushti_avatar.webp',
+  '/assets/webp/srushti_profile.webp'
 ];
 
 self.addEventListener('install', (event) => {
