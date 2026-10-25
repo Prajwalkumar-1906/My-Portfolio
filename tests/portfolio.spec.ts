@@ -200,6 +200,13 @@ test.describe("Netflix 3D Portfolio Phase 2 E2E Tests", () => {
     expect(successRes.status()).toBe(200);
     const successData = await successRes.json();
     expect(successData.success).toBe(true);
+
+    // GET endpoint returns direct messages feed
+    const getRes = await request.get("/api/contact");
+    expect(getRes.status()).toBe(200);
+    const getData = await getRes.json();
+    expect(getData.success).toBe(true);
+    expect(Array.isArray(getData.messages)).toBe(true);
   });
 
   test("9. Cinematic Logo & Entrance Portrait rendering", async ({ page }) => {

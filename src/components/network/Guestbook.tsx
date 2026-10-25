@@ -39,29 +39,37 @@ export function Guestbook() {
     sound.playSelect();
 
     try {
-      const res = await fetch("/api/contact", {
+      const authorName = name.trim() || "Community Supporter";
+      const authorHandle = handle.trim() ? (handle.startsWith("@") ? handle : `@${handle}`) : "@supporter";
+      const noteText = note.trim();
+
+      await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name,
+          name: authorName,
           email: "guestbook-visitor@prajwal.portfolio",
-          purpose: "guestbook",
-          message: `
-[GUESTBOOK NOTE FOR MODERATION]
-Author: ${name}
-Handle/Context: ${handle || "None provided"}
-Note:
-"${note}"
-          `.trim()
+          purpose: "Guestbook Community Note",
+          message: `[Community Wall Note]\nAuthor: ${authorName}\nHandle: ${authorHandle}\nMessage: "${noteText}"`
         })
       });
 
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.error || "Submission failed");
-      }
+      // Direct message added immediately to live wall
+      const newEntry: GuestbookEntry = {
+        id: `guest-${Date.now()}`,
+        name: authorName,
+        handle: authorHandle,
+        avatarColor: "bg-emerald-600",
+        date: "Just now",
+        note: noteText,
+        isApproved: true
+      };
 
+      setEntries((prev) => [newEntry, ...prev]);
       setSubmitted(true);
+      setName("");
+      setHandle("");
+      setNote("");
       sound.playTudumChord(true);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Failed to post note";

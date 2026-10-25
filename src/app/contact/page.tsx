@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { Mail, MapPin, Clock } from "lucide-react";
+import { Mail, MapPin, Clock, MessageSquare } from "lucide-react";
 import { Linkedin, Github } from "@/components/ui/BrandIcons";
 import { PROFILE } from "@/data/profile";
 
@@ -43,6 +43,23 @@ export default function ContactPage() {
                       className="text-white font-mono hover:text-[#E50914] transition-colors"
                     >
                       {PROFILE.email}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="p-2 rounded-lg bg-white/5 text-emerald-400">
+                    <MessageSquare className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-zinc-400 text-xs font-medium">Instant Chat / WhatsApp</div>
+                    <a
+                      href="https://wa.me/?text=Hi%20Prajwal,%20reaching%20out%20from%20your%20portfolio"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white hover:text-emerald-400 transition-colors"
+                    >
+                      Open Direct WhatsApp Conversation
                     </a>
                   </div>
                 </div>
